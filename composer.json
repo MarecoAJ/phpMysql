@@ -1,0 +1,17 @@
+{
+    "name": "hp-notebook/php-mysql",
+    "type": "proyect",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alejandro J Mareco",
+            "email": "a.j.mareco.cit@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Database\\": "database/"
+        }
+    },
+    "require": {}
+}

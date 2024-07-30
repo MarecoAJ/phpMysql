@@ -1,5 +1,6 @@
 <?php
 
+namespace Database\MySQLi;
 
 class Connection {
     private static $instancia;
@@ -29,7 +30,7 @@ class Connection {
         $password = "";
         //$mysqli = mysqli_connect($server, $username, $password, $database);
         //POO
-        $mysqli = new mysqli($server, $username, $password, $database);
+        $mysqli = new \mysqli($server, $username, $password, $database);
         /*
         if(!$mysqli){
             die("Fallo de conexion". mysqli_connect_error());  
