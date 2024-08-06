@@ -25,7 +25,7 @@ class Connection {
     private function crear_conexion(){
         
         $server ="localhost";
-        $database = "finanzas_php";
+        $database = "php_finanzas";
         $username = "root";
         $password = "";
         //$mysqli = mysqli_connect($server, $username, $password, $database);
