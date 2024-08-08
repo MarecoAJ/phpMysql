@@ -11,15 +11,18 @@ class ControladorEntradas {
 
     public function crearEntrada($datos){
         $connection = Connection::getIntancia()->get_db_instancia();
-        $connection->query(
+        $statement = $connection->prepare(
             "INSERT INTO entradas (tipos_pagos, tipos, fecha_pago, monto, descripcion) 
-            VALUES(
-            {$datos['tipos_pagos']},
-            {$datos['tipos']},
-            '{$datos['fecha_pago']}',
-            {$datos['monto']},
-            '{$datos['descripcion']}');
-            ");
+            VALUES(?, ?, ?, ?, ?)");
+
+            $tipos_pagos = $datos['tipos_pagos'];
+            $tipos = $datos['tipos'];
+            $fecha_pago = $datos['fecha_pago'];
+            $monto = $datos['monto'];
+            $descripcion = $datos['descripcion'];
+
+        $statement->bind_param("iisds", $tipos_pagos, $tipos, $fecha_pago, $monto, $descripcion);
+        $statement->exec();
     }
 
     public function mostrarCrearEntrada(){}
