@@ -18,7 +18,7 @@ class Connection {
         return self::$instancia;
     }
 
-    public function get_db_instancia(){
+    public function get_db_instancia(){       
         return $this->connection;
     }
 
@@ -28,11 +28,13 @@ class Connection {
         $username = "root";
         $password = "";
 
-        $connection = new \PDO("mysql:host=$server;dbname=$database", $username, $password);
+        $dns = "mysql:host=" . $server . ";dbname=" . $database;
+
+        $connection = new \PDO($dns, $username, $password);
         $setnames = $connection->prepare("SET NAMES 'utf8'");
         $setnames->execute();
         var_dump($setnames);
-
+        $this->connection = $connection;
     }
 
 }
