@@ -18,7 +18,7 @@ $datos = [
 
 $entradas_controlador = new ControladorEntradas();
 $entradas_controlador -> crearEntrada($datos);
-*/
+
 $datos = [
     "tipos_pagos"=> TiposPagosEnum::Transferencia->value,
     "tipos"=> TiposSalidasEnum::compra->value,
@@ -29,4 +29,9 @@ $datos = [
    
 $salidas_controlador = new ControladorSalidas();
 $salidas_controlador -> crearSalida($datos);
+*/
+
+$salidas_controlador = new ControladorSalidas();
+$salidas_controlador -> obtenerSalidas();
+
 ?>

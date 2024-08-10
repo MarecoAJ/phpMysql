@@ -10,7 +10,7 @@ class Connection {
         $this->crear_conexion();
     }
 
-    public static function getIntancia(){
+    public static function getInstancia(){
         if(!self::$instancia instanceof self){
             self::$instancia = new self();
         }

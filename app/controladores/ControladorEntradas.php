@@ -5,13 +5,20 @@ namespace App\Controladores;
 use Database\MySQLi\Connection;
 
 class ControladorEntradas {
+
+    private $db_connection;
+
+    public function __construct(){
+        $this->db_connection = Connection::getInstancia()->get_db_instancia();
+    }
+
     public function obtenerEntradas(){}
 
     public function obtenerEntrada(){}
 
     public function crearEntrada($datos){
-        $connection = Connection::getIntancia()->get_db_instancia();
-        $statement = $connection->prepare(
+    
+        $statement = $this->db_connection->prepare(
             "INSERT INTO entradas (tipos_pagos, tipos, fecha_pago, monto, descripcion) 
             VALUES(?, ?, ?, ?, ?)");
 

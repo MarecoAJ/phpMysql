@@ -5,14 +5,19 @@ namespace App\Controladores;
 use Database\PDO\Connection;
 
 class ControladorSalidas {
+
+    private $db_connection;
+
+    public function __construct(){
+        $this->db_connection = Connection::getInstacia()->get_db_instancia();
+    }
     public function obtenerSalidas(){}
 
     public function obtenerSalida(){}
 
     public function crearSalida($datos){
 
-        $connection = Connection::getInstacia()->get_db_instancia();
-        $statement = $connection->prepare(
+        $statement = $this->db_connection->prepare(
             "INSERT INTO salidas (tipos_pagos, tipos, fecha_pago, monto, descripcion) 
             VALUES(:tipos_pagos, :tipos, :fecha_pago, :monto, :descripcion);"
         );
