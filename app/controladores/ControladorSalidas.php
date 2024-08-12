@@ -82,7 +82,21 @@ class ControladorSalidas {
 
     public function mostrarEditarSalida(){}
 
-    public function borrarSalida(){}
+    public function borrarSalida($id){
+        
+        $this->db_connection->beginTransaction();
+
+        $statement = $this->db_connection->prepare(
+            "DELETE FROM salidas WHERE id = :id;"
+        );
+        $statement->execute([
+            ":id" => $id
+        ]);
+
+        $this->db_connection->commit();
+
+
+    }
 }
 
 ?>
