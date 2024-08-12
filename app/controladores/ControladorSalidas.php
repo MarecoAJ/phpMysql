@@ -78,7 +78,25 @@ class ControladorSalidas {
 
     public function mostrarCrearSalida(){}
 
-    public function editarSalida(){}
+    public function editarSalida($datos, $id){
+
+        $statement = $this->db_connection->prepare(
+            "UPDATE salidas SET 
+            tipos_pagos = :tipos_pagos,
+            tipos = :tipos,
+            fecha_pago = :fecha_pago,
+            monto = :monto,
+            descripcion = :descripcion
+            WHERE id = :id;"
+        );
+
+        $statement->bindValue(":tipos_pagos", $datos["tipos_pagos"]);
+        $statement->bindValue(":tipos", $datos["tipos"]);
+        $statement->bindValue(":fecha_pago", $datos["fecha_pago"]);
+        $statement->bindValue(":monto", $datos["monto"]);
+        $statement->bindValue(":descripcion", $datos["descripcion"]);
+        $statement->execute();
+    }
 
     public function mostrarEditarSalida(){}
 
