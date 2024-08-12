@@ -29,9 +29,12 @@ $datos = [
    
 $salidas_controlador = new ControladorSalidas();
 $salidas_controlador -> crearSalida($datos);
+
+$salidas_controlador = new ControladorSalidas();
+var_dump($salidas_controlador -> obtenerSalidas());
 */
 
 $salidas_controlador = new ControladorSalidas();
-$salidas_controlador -> obtenerSalidas();
+var_dump($salidas_controlador -> obtenerSalida(3));
 
 ?>
