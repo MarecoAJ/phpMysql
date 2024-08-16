@@ -22,23 +22,23 @@ class RouterHandler {
         $recurso = new $controlador;
         switch($this->metodoHTTP){
             case "get":
-                if ($id && $id == "mostrarcrearsalida"){
-                    $recurso->mostrarCrearSalida();
+                if ($id && $id == "mostrarcrear"){
+                    $recurso->mostrarCrear();
                 }
                 else if($id){
-                    $recurso->obtenerSalida($id);
+                    $recurso->obtener($id);
                 }
                 else{
-                    $recurso->obtenerSalidas();
+                    $recurso->obtenerTodo();
                 }
                 break;
             
             case "post":
-                $recurso->crearSalida($this->datos);
+                $recurso->crear($this->datos);
                 break;
             
             case "delete":
-                $recurso->borrarSalida($id);
+                $recurso->borrar($id);
                 break;
 
         }

@@ -12,11 +12,11 @@ class ControladorEntradas {
         $this->db_connection = Connection::getInstancia()->get_db_instancia();
     }
 
-    public function obtenerEntradas(){}
+    public function obterTodo(){}
 
-    public function obtenerEntrada(){}
+    public function obtener(){}
 
-    public function crearEntrada($datos){
+    public function crear($datos){
     
         $statement = $this->db_connection->prepare(
             "INSERT INTO entradas (tipos_pagos, tipos, fecha_pago, monto, descripcion) 
@@ -32,13 +32,13 @@ class ControladorEntradas {
         $statement->exec();
     }
 
-    public function mostrarCrearEntrada(){}
+    public function mostrarCrear(){}
 
-    public function editarEntrada(){}
+    public function editar(){}
 
-    public function mostrarEditarEntrada(){}
+    public function mostrarEditar(){}
 
-    public function borrarEntrada(){}
+    public function borrar(){}
 }
 
 ?>

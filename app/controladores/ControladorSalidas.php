@@ -12,7 +12,7 @@ class ControladorSalidas {
         $this->db_connection = Connection::getInstacia()->get_db_instancia();
     }
 
-    public function obtenerSalidas(): array{
+    public function obtenerTodo(): array{
         $resultado = [];
 
         $statement = $this->db_connection->prepare(
@@ -36,7 +36,7 @@ class ControladorSalidas {
        return $resultado;
     }
 
-    public function obtenerSalida($id){
+    public function obtener($id){
         $resultado = "";
 
         $statement = $this->db_connection->prepare(
@@ -60,7 +60,7 @@ class ControladorSalidas {
        return $resultado;
     }
 
-    public function crearSalida($datos){
+    public function crear($datos){
 
         $statement = $this->db_connection->prepare(
             "INSERT INTO salidas (tipos_pagos, tipos, fecha_pago, monto, descripcion) 
@@ -76,9 +76,9 @@ class ControladorSalidas {
          
     }
 
-    public function mostrarCrearSalida(){}
+    public function mostrarCrear(){}
 
-    public function editarSalida($datos, $id){
+    public function editar($datos, $id){
 
         $statement = $this->db_connection->prepare(
             "UPDATE salidas SET 
@@ -98,9 +98,9 @@ class ControladorSalidas {
         $statement->execute();
     }
 
-    public function mostrarEditarSalida(){}
+    public function mostrarEditar(){}
 
-    public function borrarSalida($id){
+    public function borrar($id){
         
         $this->db_connection->beginTransaction();
 
