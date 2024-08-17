@@ -12,28 +12,16 @@ class ControladorSalidas {
         $this->db_connection = Connection::getInstacia()->get_db_instancia();
     }
 
-    public function obtenerTodo(): array{
-        $resultado = [];
+    public function obtenerTodo(){
 
         $statement = $this->db_connection->prepare(
             "SELECT * FROM salidas;"
         );
 
         $statement->execute();
-        foreach($statement->fetchAll() as $item){
-            array_push($resultado, 
-                [
-                    "id" => $item[0],
-                    "tipos_pagos" => $item[1],
-                    "tipos" => $item[2],
-                    "fecha_pago" => $item[3],
-                    "monto" => $item[4],
-                    "descripcion" => $item[5]
-                ]
-            ); 
-        }
-        
-       return $resultado;
+        $resultado = $statement->fetchAll();
+
+        require("../recursos/vistas/salidas/index.php");
     }
 
     public function obtener($id){
@@ -73,10 +61,13 @@ class ControladorSalidas {
         $statement->bindValue(":monto", $datos["monto"]);
         $statement->bindValue(":descripcion", $datos["descripcion"]);
         $statement->execute();
-         
+
+        header("location: salidas");   
     }
 
-    public function mostrarCrear(){}
+    public function mostrarCrear(){
+        require("../recursos/vistas/salidas/mostrarCrearSalida.php");
+    }
 
     public function editar($datos, $id){
 
